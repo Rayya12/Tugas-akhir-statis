@@ -1,0 +1,89 @@
+# import data dari excel
+
+library(xlsx)
+amaranthus <- read.xlsx("Amaranthus.xlsx",sheetName = "Sheet1")
+
+# mengambil data perjenis
+viridis <- subset(amaranthus , Jenis=="viridis")
+dubius <- subset(amaranthus,Jenis=="dubius")
+
+## statistika deskriptif
+library(DescTools)
+
+# viridis
+PDV <- as.numeric(viridis$Panjang_Daun_cm)
+summary(PDV) # mendapatkan data MIN, Q1, Median, MEAN, Q3, MAX
+Mode(PDV) #mendapatkan mode
+sd(PDV) # mendapatkan sd
+var(PDV) # mendapatkan varians
+
+LDV <- as.numeric(viridis$Lebar_Daun_cm)
+summary(LDV) # mendapatkan data MIN, Q1, Median, MEAN, Q3, MAX
+Mode(LDV) #mendapatkan mode
+sd(LDV) # mendapatkan sd
+var(LDV) # mendapatkan varians
+
+DDV <- as.numeric(viridis$Diagonal_Daun_cm)
+summary(DDV) # mendapatkan data MIN, Q1, Median, MEAN, Q3, MAX
+Mode(DDV) #mendapatkan mode
+sd(DDV) # mendapatkan sd
+var(DDV) # mendapatkan varians
+
+
+# dubius
+PDD <- as.numeric(dubius$Panjang_Daun_cm)
+summary(PDD) # mendapatkan data MIN, Q1, Median, MEAN, Q3, MAX
+Mode(PDD) #mendapatkan mode
+sd(PDD) # mendapatkan sd
+var(PDD) # mendapatkan varians
+
+LDD <- as.numeric(dubius$Lebar_Daun_cm)
+summary(LDD) # mendapatkan data MIN, Q1, Median, MEAN, Q3, MAX
+Mode(LDD) #mendapatkan mode
+sd(LDD) # mendapatkan sd
+var(LDD) # mendapatkan varians
+
+DDD <- as.numeric(dubius$Diagonal_Daun_cm)
+summary(DDD) # mendapatkan data MIN, Q1, Median, MEAN, Q3, MAX
+Mode(DDD) #mendapatkan mode
+sd(DDD) # mendapatkan sd
+var(DDD) # mendapatkan varians
+
+# melihat data dalam histogram
+
+hist(PDV)
+hist(LDV)
+hist(DDV)
+hist(PDD)
+hist(LDD)
+hist(DDD)
+
+# melihat skewness dalam data
+library(e1071)
+skewness(PDV)
+skewness(LDV)
+skewness(DDV)
+skewness(PDD)
+skewness(LDD)
+skewness(DDD)
+
+
+qqnorm(PDV, main = 'Q-Q plot for PDV') 
+qqline(PDV, col = 3, lwd = 2)
+
+qqnorm(LDV, main = 'Q-Q plot for LDV') 
+qqline(LDV, col = 3, lwd = 2)
+
+qqnorm(DDV, main = 'Q-Q plot for DDV') 
+qqline(DDV, col = 3, lwd = 2)
+
+qqnorm(PDD, main = 'Q-Q plot for PDD') 
+qqline(PDD, col = 3, lwd = 2)
+
+qqnorm(LDD, main = 'Q-Q plot for LDD') 
+qqline(LDD, col = 3, lwd = 2)
+
+qqnorm(DDD, main = 'Q-Q plot for DDD') 
+qqline(DDD, col = 3, lwd = 2)
+
+
